@@ -18,16 +18,18 @@ userRoute.post(
             try {
                 let userObj = req.body;
 
-                //  Step 1: upload image to cloudinary from memoryStorage (if exists)
+                /* 
+                //  Step 1: upload image to cloudinary (disabled since user doesn't have cloudinary)
                 if (req.file) {
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
                 }
+                */
 
                 // Step 2: call existing register()
                 const newUserObj = await register({
                 ...userObj,
                 role: "USER",
-                profileImageUrl: cloudinaryResult?.secure_url,
+                profileImageUrl: null, // No image since Cloudinary is disabled
                 });
 
                 res.status(201).json({
@@ -36,11 +38,12 @@ userRoute.post(
                 });
 
             } catch (err) {
-
+                /*
                 // Step 3: rollback 
                 if (cloudinaryResult?.public_id) {
                 await cloudinary.uploader.destroy(cloudinaryResult.public_id);
                 }
+                */
 
                 next(err); // send to your error middleware
             }

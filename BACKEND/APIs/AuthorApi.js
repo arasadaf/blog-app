@@ -17,21 +17,25 @@ authorRoute.post('/users', upload.single("profileImageUrl"), async(req,res, next
     try {
         let userObj=req.body;
 
+        /*
         if (req.file) {
             cloudinaryResult = await uploadToCloudinary(req.file.buffer);
         }
+        */
 
         const newUserObj=await register({
             ...userObj,
             role:"AUTHOR",
-            profileImageUrl: cloudinaryResult?.secure_url,
+            profileImageUrl: null,
         })
         res.status(201).json({message:"Author created",payload:newUserObj})
 
     } catch (err) {
+        /*
         if (cloudinaryResult?.public_id) {
             await cloudinary.uploader.destroy(cloudinaryResult.public_id);
         }
+        */
         next(err);
     }
 });
