@@ -65,7 +65,7 @@ function Register() {
       if(role === "user"){
 
         let resObj = await axios.post(
-          "https://blog-app-xmhv.onrender.com/user-api/users",
+          "http://localhost:10000/user-api/users",
           formData,
           { 
             headers: { 
@@ -83,7 +83,7 @@ function Register() {
       if(role === "author"){
 
         let resObj = await axios.post(
-          "https://blog-app-xmhv.onrender.com/author-api/users",
+          "http://localhost:10000/author-api/users",
           formData,
           { 
             headers: { 

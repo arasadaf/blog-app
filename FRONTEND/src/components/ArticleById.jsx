@@ -41,7 +41,7 @@ function ArticleById() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`https://blog-app-xmhv.onrender.com/user-api/articles/${id}`, { withCredentials: true });
+        const res = await axios.get(`http://localhost:10000/user-api/articles/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -70,7 +70,7 @@ function ArticleById() {
 
     try {
       const res = await axios.patch(
-        `https://blog-app-xmhv.onrender.com/author-api/articles/${id}/status`,
+        `http://localhost:10000/author-api/articles/${id}/status`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -99,7 +99,7 @@ function ArticleById() {
         comment: data.comment
       }
       
-      const res = await axios.post(`https://blog-app-xmhv.onrender.com/user-api/articles/${id}/comments`, payload, { withCredentials: true });
+      const res = await axios.post(`http://localhost:10000/user-api/articles/${id}/comments`, payload, { withCredentials: true });
       
       // Update article locally
       setArticle({
@@ -160,7 +160,7 @@ function ArticleById() {
 
       <div className={articleContent}>{article.content}</div>
 
-      {user?.role === "AUTHOR" && user.userId === (article.author?._id || article.author) && (
+      {user?.role === "AUTHOR" && (user._id || user.id || user.userId) === (article.author?._id || article.author) && (
         <div className="border-t border-gray-200 mt-16 pt-8 flex items-center gap-4">
           <button className={editBtn} onClick={() => editArticle(article)}>
             ✏️ Edit Article

@@ -28,9 +28,9 @@ function AddArticle() {
 
     try {
       toast.loading("Publishing...");
-      await axios.post("https://blog-app-xmhv.onrender.com/author-api/articles", {
+      await axios.post("http://localhost:10000/author-api/articles", {
         ...data,
-        author: user.userId,
+        author: user._id || user.id || user.userId,
       }, { withCredentials: true });
 
       toast.dismiss();
