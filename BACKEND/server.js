@@ -13,7 +13,7 @@ config(); //process.env
 //Create express application
 const app = exp();
 //use cors middleware
-app.use(cors({ origin: ["http://localhost:5173","https://blog-app-t2yb.vercel.app", "https://blog-app-vme5.vercel.app"] , credentials:true})); //credentials allow browser to recieve the token
+app.use(cors({ origin: ["http://localhost:5173","https://blog-app-t2yb.vercel.app", "https://blog-app-vme5.vercel.app", "https://blog-app-seq8.vercel.app"] , credentials:true})); //credentials allow browser to recieve the token
 //add body parser middleware
 app.use(exp.json());
 //add cookie parser middleware
