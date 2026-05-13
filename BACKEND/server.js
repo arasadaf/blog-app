@@ -13,7 +13,24 @@ config(); //process.env
 //Create express application
 const app = exp();
 //use cors middleware
-app.use(cors({ origin: ["http://localhost:5173","https://blog-app-t2yb.vercel.app", "https://blog-app-vme5.vercel.app", "https://blog-app-seq8.vercel.app"] , credentials:true})); //credentials allow browser to recieve the token
+app.use(cors({ 
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "http://localhost:5173",
+      "https://blog-app-t2yb.vercel.app",
+      "https://blog-app-vme5.vercel.app",
+      "https://blog-app-seq8.vercel.app",
+      "https://blog-app-7j3a.vercel.app"
+    ];
+    // Allow any origin that is in the list or ends with .vercel.app (for preview deployments)
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }, 
+  credentials: true 
+})); //credentials allow browser to recieve the token
 //add body parser middleware
 app.use(exp.json());
 //add cookie parser middleware
