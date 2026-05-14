@@ -49,7 +49,7 @@ function Home() {
       </div>
 
       {/* Explore Categories */}
-      <div className="py-20 bg-linear-to-b from-transparent to-white/50 rounded-[4rem]">
+      <div className="py-20 bg-gradient-to-b from-transparent to-white/50 rounded-[4rem]">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-black text-gray-900 mb-10">Popular Categories</h2>
           <div className="flex flex-wrap justify-center gap-4">
