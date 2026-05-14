@@ -18,10 +18,9 @@ export const useAuth = create((set)=>({
             set({loading:false,isAuthenticated:true,currentUser:res.data.payload})
         }catch(err){
             console.log("error is", err)
-            //set error
             set({
                 loading: false,
-                error : err.response?.data?.error || "error",
+                error : err.response?.data?.message || err.response?.data?.error || "Login failed. Please check your credentials.",
                 isAuthenticated: false,
                 currentUser : null
             })
@@ -35,10 +34,9 @@ export const useAuth = create((set)=>({
             set({loading:false,isAuthenticated:false,currentUser:null})
         }catch(err){
             console.log("error is", err)
-            //set error
             set({
                 loading: false,
-                error : err.response?.data?.error || "error",
+                error : err.response?.data?.message || err.response?.data?.error || "Logout failed.",
                 isAuthenticated: false,
                 currentUser : null
             })
