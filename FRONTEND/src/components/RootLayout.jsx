@@ -14,11 +14,11 @@ function RootLayout() {
     return <p className="text-center mt-10">Loading..</p>
   }
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-[#f8fafc]">
         <Header/>
-        <div className="mx-20 min-h-screen">
+        <main className="flex-grow px-4 md:px-8 lg:px-12 py-8 w-full max-w-7xl mx-auto">
             <Outlet/>
-        </div>
+        </main>
         <Footer/>
     </div>
   )

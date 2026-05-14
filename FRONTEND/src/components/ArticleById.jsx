@@ -41,7 +41,7 @@ function ArticleById() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`https://blog-app-5geq.onrender.com/user-api/articles/${id}`, { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user-api/articles/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -70,7 +70,7 @@ function ArticleById() {
 
     try {
       const res = await axios.patch(
-        `https://blog-app-5geq.onrender.com/author-api/articles/${id}/status`,
+        `${import.meta.env.VITE_API_URL}/author-api/articles/${id}/status`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -99,7 +99,7 @@ function ArticleById() {
         comment: data.comment
       }
       
-      const res = await axios.post(`https://blog-app-5geq.onrender.com/user-api/articles/${id}/comments`, payload, { withCredentials: true });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user-api/articles/${id}/comments`, payload, { withCredentials: true });
       
       // Update article locally
       setArticle({
@@ -185,7 +185,7 @@ function ArticleById() {
                 className={inputClass + " resize-none bg-white"}
                 placeholder="What are your thoughts?"
               />
-              <button type="submit" className="bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold px-6 py-2.5 rounded-full self-end hover:-translate-y-0.5 shadow-lg shadow-indigo-500/30 transition-all">
+              <button type="submit" className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold px-6 py-2.5 rounded-full self-end hover:-translate-y-0.5 shadow-lg shadow-indigo-500/30 transition-all">
                 Publish Response
               </button>
             </form>

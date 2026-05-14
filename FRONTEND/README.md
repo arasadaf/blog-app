@@ -1,16 +1,55 @@
-# React + Vite
+# 🎨 BlogApp Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A stunning, responsive React frontend for the BlogApp platform, built with Vite and Tailwind CSS.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Library**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS (Custom Glassmorphic Theme)
+- **State Management**: Zustand
+- **Routing**: React Router 6
+- **API Client**: Axios
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 💎 Design System
+
+The application uses a unified design system defined in `src/styles/common.js`. This ensures consistency across all pages and simplifies maintenance.
+
+### Key Features:
+- **Glassmorphism**: Cards and navbars use `backdrop-blur` and semi-transparent backgrounds for a premium feel.
+- **Vibrant Gradients**: Used for buttons, text highlights, and icons.
+- **Mobile First**: All components are built with responsive utility classes (`md:`, `lg:`, etc.) to ensure a seamless experience on mobile devices.
+
+---
+
+## 🔐 State Management
+We use **Zustand** in `src/store/authStore.js` to manage global authentication state. This allows any component in the app to easily check if a user is logged in or access their profile information without complex prop drilling.
+
+---
+
+## 📱 Responsiveness
+- **Navigation**: Collapses into a hamburger menu on screens smaller than 768px.
+- **Dashboard**: Layout shifts from multi-column grids to single-column lists on mobile.
+- **Typography**: Font sizes automatically scale down for better readability on small screens.

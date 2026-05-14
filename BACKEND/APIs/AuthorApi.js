@@ -83,7 +83,7 @@ authorRoute.get('/articles/:articleId/comments', verifyToken("AUTHOR"), async (r
 });
 
 //Read articles of author
-authorRoute.get('/articles/:authorId',verifyToken("AUTHOR"),checkAuthor,async(req,res)=>{
+authorRoute.get('/articles/:authorId', verifyToken("AUTHOR"), async (req, res) => {
     //get author id
      let aid=req.params.authorId;
     //read articles by this author which are active

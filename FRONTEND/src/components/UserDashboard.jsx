@@ -11,7 +11,7 @@ function UserDashboard() {
 
   const getArticles = async () =>{
     try{
-      let res = await axios.get("https://blog-app-5geq.onrender.com/user-api/articles", {withCredentials:true})
+      let res = await axios.get(`${import.meta.env.VITE_API_URL}/user-api/articles`, {withCredentials:true})
       if (res.data.payload) {
         setArticles(res.data.payload)
       }
@@ -26,9 +26,9 @@ function UserDashboard() {
   
   return (
     <div className={pageWrapper}>
-      <div className="flex flex-col md:flex-row items-center gap-6 mb-12 bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl shadow-indigo-500/10">
+      <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6 mb-8 md:mb-12 bg-white/60 backdrop-blur-md p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/50 shadow-xl shadow-indigo-500/10">
           {currentUser?.profileImageUrl && (
-            <div className="w-24 h-24 shrink-0 relative">
+            <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 relative">
               <img 
                 src={currentUser.profileImageUrl} 
                 alt="Profile" 
@@ -38,10 +38,10 @@ function UserDashboard() {
             </div>
           )}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-pink-500 p-1">
-              Welcome back, {currentUser?.firstName || currentUser?.name || 'Reader'}!
+            <h1 className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">
+              Welcome back, {currentUser?.firstName || 'Reader'}!
             </h1>
-            <p className="text-gray-500 font-medium mt-1">Explore the latest brilliantly crafted stories.</p>
+            <p className="text-gray-500 font-medium mt-1 text-sm md:text-base">Explore the latest brilliantly crafted stories.</p>
           </div>
       </div>
 
@@ -59,7 +59,7 @@ function UserDashboard() {
             {articles.map((article)=>(
               <Link to={`/article/${article._id}`} key={article._id} className={articleCardClass}>
                  {article.imageUrl && (
-                   <div className="w-full h-48 bg-linear-to-br from-indigo-100 to-pink-100 rounded-2xl mb-4 overflow-hidden relative shadow-inner">
+                   <div className="w-full h-48 bg-gradient-to-br from-indigo-100 to-pink-100 rounded-2xl mb-4 overflow-hidden relative shadow-inner">
                       <img src={article.imageUrl} alt="Cover" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute top-3 left-3">
                          <span className={tagClass}>{article.category || 'General'}</span>

@@ -39,65 +39,47 @@ function Register() {
 
 
   const onUserRegister = async (newUser) => {
-  
+    console.log("Registering user with data:", newUser);
     setLoading(true);
     
     // Create form data object
-        const formData = new FormData();
-        //get user object
-        let { role, profileImageUrl, ...userObj } = newUser;
-        //add role override
-        userObj.role = role.toUpperCase();
-        //add all fields to FormData object
-        Object.keys(userObj).forEach((key) => {
-        formData.append(key, userObj[key]);
-        });
-        if (profileImageUrl && profileImageUrl[0]) {
-          formData.append("profileImageUrl", profileImageUrl[0]);
-        }
-
+    const formData = new FormData();
+    // Use the role directly from newUser
+    const selectedRole = newUser.role;
     
+    // Create user object without role and image for the body
+    let { role, profileImageUrl, ...userObj } = newUser;
+    userObj.role = selectedRole.toUpperCase();
 
-    
+    Object.keys(userObj).forEach((key) => {
+      formData.append(key, userObj[key]);
+    });
+
+    if (profileImageUrl && profileImageUrl[0]) {
+      formData.append("profileImageUrl", profileImageUrl[0]);
+    }
+
     try {
-
-     // user registration
-      if(role === "user"){
-
+      // user registration
+      if (selectedRole === "user") {
         let resObj = await axios.post(
-          "https://blog-app-5geq.onrender.com/user-api/users",
+          `${import.meta.env.VITE_API_URL}/user-api/users`,
           formData,
-          { 
-            headers: { 
-              'Content-Type': 'multipart/form-data' 
-            } 
-          }
+          { headers: { 'Content-Type': 'multipart/form-data' } }
         );
-
-        if(resObj.status === 201){
-          navigate("/Login");
-        }
+        if (resObj.status === 201) navigate("/Login");
       }
 
       // author registration
-      if(role === "author"){
-
+      if (selectedRole === "author") {
         let resObj = await axios.post(
-          "https://blog-app-5geq.onrender.com/author-api/users",
+          `${import.meta.env.VITE_API_URL}/author-api/users`,
           formData,
-          { 
-            headers: { 
-              'Content-Type': 'multipart/form-data' 
-            } 
-          }
+          { headers: { 'Content-Type': 'multipart/form-data' } }
         );
-
-        if(resObj.status === 201){
-          navigate("/Login");
-        }
+        if (resObj.status === 201) navigate("/Login");
       }
-
-    } catch(err){
+    } catch (err) {
       console.log(err)
       setError(err.response?.data?.error || "Registration failed");
     } finally{
@@ -122,7 +104,7 @@ function Register() {
       <div className="absolute -bottom-8 left-1/3 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-4000"></div>
 
       <div className="w-full max-w-xl relative z-10 glass-panel p-10 rounded-3xl bg-white/70 backdrop-blur-2xl border border-white/50 shadow-2xl shadow-indigo-500/10">
-        <h2 className="text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-pink-500 text-center mb-8">
+        <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 text-center mb-8">
           Join Us
         </h2>
         
@@ -134,13 +116,13 @@ function Register() {
 
         <form onSubmit={handleSubmit(onUserRegister)} className="space-y-6">
           <div className="flex justify-center gap-6 mb-8">
-            <label className="flex items-center gap-2 cursor-pointer p-4 border border-indigo-100 rounded-2xl bg-white/50 hover:bg-white flex-1 justify-center transition">
+            <label className={`flex items-center gap-2 cursor-pointer p-4 border rounded-2xl flex-1 justify-center transition-all ${watch("role") === "user" ? "border-indigo-600 bg-indigo-50/50 ring-4 ring-indigo-500/10" : "border-indigo-100 bg-white/50 hover:bg-white"}`}>
               <input type="radio" value="user" {...register("role",{required:true})} className="w-5 h-5 text-indigo-600 focus:ring-indigo-500" />
-              <span className="font-bold text-gray-700">Reader</span>
+              <span className={`font-bold ${watch("role") === "user" ? "text-indigo-700" : "text-gray-700"}`}>Reader</span>
             </label>
-            <label className="flex items-center gap-2 cursor-pointer p-4 border border-indigo-100 rounded-2xl bg-white/50 hover:bg-white flex-1 justify-center transition">
+            <label className={`flex items-center gap-2 cursor-pointer p-4 border rounded-2xl flex-1 justify-center transition-all ${watch("role") === "author" ? "border-indigo-600 bg-indigo-50/50 ring-4 ring-indigo-500/10" : "border-indigo-100 bg-white/50 hover:bg-white"}`}>
               <input type="radio" value="author" {...register("role",{required:true})} className="w-5 h-5 text-indigo-600 focus:ring-indigo-500" />
-              <span className="font-bold text-gray-700">Author</span>
+              <span className={`font-bold ${watch("role") === "author" ? "text-indigo-700" : "text-gray-700"}`}>Author</span>
             </label>
           </div>
           {errors.role && <p className="text-red-500 text-sm font-semibold -mt-4 text-center">Please select a role</p>}
@@ -204,7 +186,7 @@ function Register() {
             )}
           </div>
 
-          <button className="w-full bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 rounded-xl hover:from-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-500/30 transition-all transform hover:-translate-y-0.5 text-lg mt-2">
+          <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 rounded-xl hover:from-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-500/30 transition-all transform hover:-translate-y-0.5 text-lg mt-2">
             Create Account
           </button>
         </form>

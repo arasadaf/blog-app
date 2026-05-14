@@ -48,7 +48,7 @@ function EditArticle() {
 
       setLoading(true);
       try {
-        const res = await axios.get(`https://blog-app-5geq.onrender.com/user-api/articles/${id}`, { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user-api/articles/${id}`, { withCredentials: true });
         const articleData = res.data.payload;
         setArticle(articleData);
         setValue("title", articleData.title);
@@ -79,7 +79,7 @@ function EditArticle() {
     try {
       toast.loading("Updating article...");
       data.articleId = id;
-      const res = await axios.put("https://blog-app-5geq.onrender.com/author-api/articles", data, { withCredentials: true });
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/author-api/articles`, data, { withCredentials: true });
       toast.dismiss();
       toast.success("Article updated successfully!");
       navigate(`/article/${id}`, { state: res.data.payload });

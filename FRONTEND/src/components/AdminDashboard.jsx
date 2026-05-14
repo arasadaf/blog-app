@@ -26,8 +26,8 @@ function AdminDashboard() {
   const fetchData = async () => {
     try {
       const [articlesRes, statsRes] = await Promise.all([
-        axios.get('https://blog-app-5geq.onrender.com/admin-api/articles', { withCredentials: true }),
-        axios.get('https://blog-app-5geq.onrender.com/admin-api/stats', { withCredentials: true })
+        axios.get(`${import.meta.env.VITE_API_URL}/admin-api/articles`, { withCredentials: true }),
+        axios.get(`${import.meta.env.VITE_API_URL}/admin-api/stats`, { withCredentials: true })
       ]);
       setArticles(articlesRes.data.payload || []);
       setStats(statsRes.data.payload || {});
@@ -48,11 +48,11 @@ function AdminDashboard() {
     <div className={pageWrapper}>
       {/* Welcome Header */}
       <div className="flex flex-col lg:flex-row items-center gap-6 mb-12 bg-white/60 backdrop-blur-md p-8 rounded-3xl border border-white/50 shadow-xl shadow-purple-500/10">
-        <div className="w-20 h-20 bg-linear-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center shrink-0">
+        <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center shrink-0">
           <span className="text-2xl">⚙️</span>
         </div>
         <div className="text-center lg:text-left">
-          <h1 className="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-indigo-500">
+          <h1 className="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500">
             Admin Control Panel
           </h1>
           <p className="text-gray-500 font-medium mt-1">Manage content & users</p>
@@ -61,15 +61,15 @@ function AdminDashboard() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="bg-linear-to-br from-emerald-50 to-emerald-100 p-8 rounded-3xl border border-emerald-200 shadow-xl text-center">
+        <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-3xl border border-emerald-200 shadow-xl text-center">
           <div className="text-3xl font-black text-emerald-600 mb-2">{stats.active || 0}</div>
           <div className="text-emerald-700 font-bold text-sm uppercase tracking-wider">Active Articles</div>
         </div>
-        <div className="bg-linear-to-br from-yellow-50 to-yellow-100 p-8 rounded-3xl border border-yellow-200 shadow-xl text-center">
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-3xl border border-yellow-200 shadow-xl text-center">
           <div className="text-3xl font-black text-yellow-600 mb-2">{stats.pending || 0}</div>
           <div className="text-yellow-700 font-bold text-sm uppercase tracking-wider">Pending Review</div>
         </div>
-        <div className="bg-linear-to-br from-indigo-50 to-purple-100 p-8 rounded-3xl border border-indigo-200 shadow-xl text-center">
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-100 p-8 rounded-3xl border border-indigo-200 shadow-xl text-center">
           <div className="text-3xl font-black text-indigo-600 mb-2">{stats.total || 0}</div>
           <div className="text-indigo-700 font-bold text-sm uppercase tracking-wider">Total Articles</div>
         </div>
@@ -90,7 +90,7 @@ function AdminDashboard() {
             {articles.map((article) => (
               <div key={article._id} className={articleCardClass}>
                 {article.imageUrl && (
-                  <div className="w-full h-48 bg-linear-to-br from-indigo-100 to-pink-100 rounded-2xl mb-4 overflow-hidden relative shadow-inner">
+                  <div className="w-full h-48 bg-gradient-to-br from-indigo-100 to-pink-100 rounded-2xl mb-4 overflow-hidden relative shadow-inner">
                     <img src={article.imageUrl} alt="Cover" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-3 left-3">
                       <span className={tagClass}>{article.category || 'General'}</span>

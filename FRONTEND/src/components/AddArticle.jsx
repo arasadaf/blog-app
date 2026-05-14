@@ -28,7 +28,7 @@ function AddArticle() {
 
     try {
       toast.loading("Publishing...");
-      await axios.post("https://blog-app-5geq.onrender.com/author-api/articles", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/author-api/articles`, {
         ...data,
         author: user._id || user.id || user.userId,
       }, { withCredentials: true });

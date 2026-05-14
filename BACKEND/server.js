@@ -17,8 +17,9 @@ app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = [
       "http://localhost:5173",
+      "http://localhost:5175",
       "https://blog-app-t2yb.vercel.app",
-      "https://blog-app-vme5.vercel.app",
+      "https://blog-app-5geq.onrender.com",
       "https://blog-app-seq8.vercel.app",
       "https://blog-app-7j3a.vercel.app"
     ];
@@ -29,8 +30,10 @@ app.use(cors({
       callback(new Error("Not allowed by CORS"));
     }
   }, 
-  credentials: true 
-})); //credentials allow browser to recieve the token
+  credentials: true,
+  methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization","Accept"]
+})); // credentials allow browser to receive the token
 //add body parser middleware
 app.use(exp.json());
 //add cookie parser middleware
