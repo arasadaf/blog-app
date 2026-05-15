@@ -4,7 +4,7 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Framework**: Express.js
 - **Runtime**: Node.js
 - **Database**: MongoDB (via Mongoose)
