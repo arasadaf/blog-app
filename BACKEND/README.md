@@ -1,4 +1,4 @@
-# 🖥️ BlogApp Backend
+# BlogApp Backend
 
 The backend of BlogApp is a robust Express.js server providing RESTful APIs for article management, user authentication, and profile handling.
 
@@ -13,7 +13,7 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. **Install Dependencies**:
    ```bash
@@ -38,7 +38,7 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
 
 ---
 
-## 🛣️ API Endpoints
+##  API Endpoints
 
 ### Common API (`/common-api`)
 - `POST /register`: Create a new User/Author account.
@@ -58,9 +58,9 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
 
 ---
 
-## 🔒 Authentication Flow
+##  Authentication Flow
 We use a secure **HttpOnly Cookie** strategy for JWTs. This protects against XSS attacks as the token cannot be accessed via JavaScript on the client side. The `verifyToken` middleware ensures that only authorized users can access protected routes.
-## 📦  Technology Stack & Package Evaluation
+##   Technology Stack & Package Evaluation
 Package	Version	Technical Purpose & Strategic Use
 express	
 ^5.2.1	Chosen for its flexible routing and middleware ecosystem. Handles the REST API layer.
