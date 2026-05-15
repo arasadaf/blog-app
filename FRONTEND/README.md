@@ -1,10 +1,10 @@
-# 🎨 BlogApp Frontend
+#  BlogApp Frontend
 
 A stunning, responsive React frontend for the BlogApp platform, built with Vite and Tailwind CSS.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Library**: React 18
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS (Custom Glassmorphic Theme)
@@ -14,7 +14,7 @@ A stunning, responsive React frontend for the BlogApp platform, built with Vite 
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 1. **Install Dependencies**:
    ```bash
@@ -33,7 +33,7 @@ A stunning, responsive React frontend for the BlogApp platform, built with Vite 
 
 ---
 
-## 💎 Design System
+##  Design System
 
 The application uses a unified design system defined in `src/styles/common.js`. This ensures consistency across all pages and simplifies maintenance.
 
@@ -44,16 +44,18 @@ The application uses a unified design system defined in `src/styles/common.js`. 
 
 ---
 
-## 🔐 State Management
+##  State Management
 We use **Zustand** in `src/store/authStore.js` to manage global authentication state. This allows any component in the app to easily check if a user is logged in or access their profile information without complex prop drilling.
 
 ---
 
-## 📱 Responsiveness
+##  Responsiveness
 - **Navigation**: Collapses into a hamburger menu on screens smaller than 768px.
 - **Dashboard**: Layout shifts from multi-column grids to single-column lists on mobile.
 - **Typography**: Font sizes automatically scale down for better readability on small screens.
- ## 📦  Technology Stack & Dependencies
+
+- 
+ ##   Technology Stack & Dependencies
 Package	Version	Technical Rationale
 react	
 ^19.2.0	Utilizes latest rendering patterns and hook-based lifecycle.
