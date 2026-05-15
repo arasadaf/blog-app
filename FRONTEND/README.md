@@ -53,3 +53,21 @@ We use **Zustand** in `src/store/authStore.js` to manage global authentication s
 - **Navigation**: Collapses into a hamburger menu on screens smaller than 768px.
 - **Dashboard**: Layout shifts from multi-column grids to single-column lists on mobile.
 - **Typography**: Font sizes automatically scale down for better readability on small screens.
+ ## 📦  Technology Stack & Dependencies
+Package	Version	Technical Rationale
+react	
+^19.2.0	Utilizes latest rendering patterns and hook-based lifecycle.
+vite	
+^7.3.1	Chosen for superior HMR (Hot Module Replacement) and build speed.
+tailwindcss	
+^4.2.1	Next-gen utility styling for consistent, responsive UI across screens.
+react-router	
+^7.13.1	Industry standard for SPAs; handles protected nested layouts efficiently.
+zustand	
+^5.0.11	Minimal state container. Used for high-performance session hydration.
+axios	
+^1.13.6	Configured with withCredentials to handle secure HTTP-Only cookies.
+react-hook-form	
+^7.71.2	Manages form state with zero re-renders on the main thread.
+react-hot-toast	
+^2.6.0	Elegant, non-blocking UI notifications for user actions.
