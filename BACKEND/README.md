@@ -1,19 +1,53 @@
-# BlogApp Backend
+# 🖥️ BlogApp Backend
 
 The backend of BlogApp is a robust Express.js server providing RESTful APIs for article management, user authentication, and profile handling.
 
 ---
 
-##  Tech Stack
-- **Framework**: Express.js
-- **Runtime**: Node.js
-- **Database**: MongoDB (via Mongoose)
-- **Security**: JWT (HttpOnly Cookies), bcryptjs
-- **Storage**: Cloudinary (Image uploads)
+## 🛠️ Tech Stack & Packages
+### **Core Dependencies**
+| Package | Version | Purpose |
+| :--- | :--- | :--- |
+| **express** | `^5.2.1` | Web framework for routing and middleware. |
+| **mongoose** | `^9.1.5` | ODM for MongoDB schema and data validation. |
+| **jsonwebtoken** | `^9.0.3` | Secure authentication via signed JWTs. |
+| **bcryptjs** | `^3.0.3` | Password hashing for security. |
+| **cookie-parser** | `^1.4.7` | Parsing cookies for HttpOnly token management. |
+| **cloudinary** | `^2.9.0` | Media management and image hosting. |
+| **multer** | `^2.1.1` | Middleware for handling file uploads. |
+| **cors** | `^2.8.6` | Enabling cross-origin requests from the frontend. |
+| **dotenv** | `^17.2.3` | Environment variable management. |
 
 ---
 
-##  Getting Started
+## 🏗️ Database Schemas
+
+### **1. User Schema**
+The User model handles authentication and user profiles.
+- `firstName`: String (Required)
+- `lastName`: String
+- `email`: String (Required, Unique)
+- `password`: String (Required, Hashed)
+- `profileImageUrl`: String
+- `role`: Enum (`AUTHOR`, `USER`, `ADMIN`)
+- `isActive`: Boolean (Default: `true`)
+- `timestamps`: `createdAt`, `updatedAt`
+
+### **2. Article Schema**
+The Article model manages blog posts and their comments.
+- `author`: ObjectId (Reference to `User`)
+- `title`: String (Required)
+- `category`: String (Required)
+- `content`: String (Required)
+- `comments`: Array of Comment objects
+    - `user`: ObjectId (Reference to `User`)
+    - `comment`: String
+- `isArticleActive`: Boolean (Default: `true`)
+- `timestamps`: `createdAt`, `updatedAt`
+
+---
+
+## 🚀 Getting Started
 
 1. **Install Dependencies**:
    ```bash
@@ -32,13 +66,22 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
    ```
 
 3. **Run the Server**:
-   ```bash
-   npm start # or npm run dev for nodemon
-   ```
+   | Environment | Command | Description |
+   | :--- | :--- | :--- |
+   | **Production** | `npm start` | Runs the server using `node server.js`. |
+   | **Development** | `npm run dev` | Runs the server using `nodemon` for auto-restarts. |
 
 ---
 
-##  API Endpoints
+## 🌐 Deployment
+The backend is currently deployed and live at:
+- **Platform**: Render
+- **URL**: [https://blog-app-5geq.onrender.com](https://blog-app-5geq.onrender.com)
+- **Status**: Live 🟢
+
+---
+
+## 🛣️ API Endpoints
 
 ### Common API (`/common-api`)
 - `POST /register`: Create a new User/Author account.
@@ -58,25 +101,5 @@ The backend of BlogApp is a robust Express.js server providing RESTful APIs for 
 
 ---
 
-##  Authentication Flow
+## 🔒 Authentication Flow
 We use a secure **HttpOnly Cookie** strategy for JWTs. This protects against XSS attacks as the token cannot be accessed via JavaScript on the client side. The `verifyToken` middleware ensures that only authorized users can access protected routes.
-##   Technology Stack & Package Evaluation
-Package	Version	Technical Purpose & Strategic Use
-express	
-^5.2.1	Chosen for its flexible routing and middleware ecosystem. Handles the REST API layer.
-mongoose	
-^9.1.5	ODM for MongoDB. Enforces type safety, validation, and schema relationships.
-jsonwebtoken	
-^9.0.3	Implementation of signed tokens for secure, stateless sessions.
-bcryptjs	
-^3.0.3	Cryptographic hashing of passwords to ensure data security at rest.
-cookie-parser	
-^1.4.7	Critical for extracting tokens from HTTP-Only cookies to prevent XSS.
-multer	
-^2.1.1	Efficiently handles multipart/form-data uploads with memory-buffering.
-cloudinary
-^2.9.0	Global CDN used to host and serve optimized profile images.
-cors	
-^2.8.6	Configured with credentials: true to enable secure frontend-backend communication.
-dotenv	
-^17.2.3	Ensures environment variables are securely loaded at runtime.

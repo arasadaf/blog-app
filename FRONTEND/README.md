@@ -4,6 +4,7 @@ A stunning, responsive React frontend for the BlogApp platform, built with Vite 
 
 ---
 
+<<<<<<< HEAD
 ##  Tech Stack
 - **Library**: React 18
 - **Build Tool**: Vite
@@ -11,6 +12,20 @@ A stunning, responsive React frontend for the BlogApp platform, built with Vite 
 - **State Management**: Zustand
 - **Routing**: React Router 6
 - **API Client**: Axios
+=======
+## 🛠️ Tech Stack & Packages
+### **Core Dependencies**
+| Package | Version | Purpose |
+| :--- | :--- | :--- |
+| **react** | `^19.2.0` | Core UI library. |
+| **vite** | `^7.3.2` | Next-generation frontend build tool. |
+| **tailwindcss** | `^4.2.1` | Utility-first CSS framework for glassmorphic design. |
+| **zustand** | `^5.0.11` | Minimalist state management for auth and app state. |
+| **axios** | `^1.13.6` | Promise-based HTTP client for API requests. |
+| **react-router** | `^7.13.1` | Declarative routing for React applications. |
+| **react-hook-form** | `^7.71.2` | Performant form validation. |
+| **react-hot-toast** | `^2.6.0` | Beautiful notifications for user actions. |
+>>>>>>> cb18ab4 (docs: add schemas, packages, and updated deployment URLs)
 
 ---
 
@@ -33,7 +48,19 @@ A stunning, responsive React frontend for the BlogApp platform, built with Vite 
 
 ---
 
+<<<<<<< HEAD
 ##  Design System
+=======
+## 🌐 Deployment
+The frontend is currently deployed and live at:
+- **Platform**: Vercel
+- **URL**: [https://blog-app-frontend-arasadafs-projects.vercel.app](https://blog-app-frontend-arasadafs-projects.vercel.app)
+- **Status**: Live 🟢
+
+---
+
+## 💎 Design System
+>>>>>>> cb18ab4 (docs: add schemas, packages, and updated deployment URLs)
 
 The application uses a unified design system defined in `src/styles/common.js`. This ensures consistency across all pages and simplifies maintenance.
 
