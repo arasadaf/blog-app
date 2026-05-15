@@ -237,11 +237,12 @@ Backend URLs are managed using environment variables for:
 
 # 📡 Deployment
 
-## Frontend Deployment
 
-* Platform: Vercel
-* Auto Deployment from GitHub
-* Production Build using Vite
+## 🌐 Frontend Deployment
+- Platform: Vercel
+- Status: Live 🟢
+- Frontend URL: https://blog-app-t4yx.vercel.app/
+- Connected Backend API: https://blog-app-5geq.onrender.comProduction Build using Vite
 
 ---
 
