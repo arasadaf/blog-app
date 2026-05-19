@@ -17,7 +17,6 @@ export const useAuth = create((set)=>({
             //update state
             set({loading:false,isAuthenticated:true,currentUser:res.data.payload})
         }catch(err){
-            console.log("error is", err)
             set({
                 loading: false,
                 error : err.response?.data?.message || err.response?.data?.error || "Login failed. Please check your credentials.",
@@ -33,7 +32,6 @@ export const useAuth = create((set)=>({
             let res = await axios.get(`${import.meta.env.VITE_API_URL}/common-api/logout`,{withCredentials:true})
             set({loading:false,isAuthenticated:false,currentUser:null})
         }catch(err){
-            console.log("error is", err)
             set({
                 loading: false,
                 error : err.response?.data?.message || err.response?.data?.error || "Logout failed.",

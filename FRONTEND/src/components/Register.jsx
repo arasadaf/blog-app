@@ -80,9 +80,8 @@ function Register() {
         if (resObj.status === 201) navigate("/Login");
       }
     } catch (err) {
-      console.log(err)
-      setError(err.response?.data?.message || err.response?.data?.error || "Registration failed. Please try again.");
-    } finally{
+      setError(err.response?.data?.error || err.response?.data?.message || "Registration failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   }
