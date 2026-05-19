@@ -4,6 +4,7 @@ import { UserTypeModel } from "../models/UserModel.js";
 import bcrypt from "bcryptjs";
 import { verifyToken } from "../middlewares/verifyToken.js";
 import jwt from "jsonwebtoken";
+import { MessageModel } from "../models/MessageModel.js";
 export const commonRouter = exp.Router();
 
 //login
@@ -80,5 +81,31 @@ commonRouter.get("/check-auth", (req, res) => {
     });
   } catch (err) {
     return res.status(200).json({ message: "Not authenticated", payload: null });
+  }
+});
+
+// Contact Us message submission
+commonRouter.post("/contact", async (req, res, next) => {
+  try {
+    const { firstName, lastName, email, message } = req.body;
+    
+    // Basic validation
+    if (!firstName || !lastName || !email || !message) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Save message to database
+    const newMessage = new MessageModel({
+      firstName,
+      lastName,
+      email,
+      message,
+    });
+    
+    await newMessage.save();
+
+    res.status(201).json({ message: "Message sent successfully" });
+  } catch (err) {
+    next(err);
   }
 });

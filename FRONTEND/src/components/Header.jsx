@@ -40,6 +40,8 @@ function Header() {
          {/* Desktop Nav */}
          <nav className={navLinksClass}>
            <NavLink to="/" className={({isActive}) => isActive ? navLinkActiveClass : navLinkClass}>Home</NavLink>
+           <NavLink to="/about" className={({isActive}) => isActive ? navLinkActiveClass : navLinkClass}>About</NavLink>
+           <NavLink to="/contact" className={({isActive}) => isActive ? navLinkActiveClass : navLinkClass}>Contact</NavLink>
            
            {!isAuthenticated ? (
              <>
@@ -75,6 +77,8 @@ function Header() {
          {isMenuOpen && (
            <div className={mobileMenuOverlay}>
              <NavLink to="/" className={mobileMenuLink} onClick={closeMenu}>Home</NavLink>
+             <NavLink to="/about" className={mobileMenuLink} onClick={closeMenu}>About</NavLink>
+             <NavLink to="/contact" className={mobileMenuLink} onClick={closeMenu}>Contact</NavLink>
              {!isAuthenticated ? (
                <>
                  <NavLink to="/login" className={mobileMenuLink} onClick={closeMenu}>Login</NavLink>

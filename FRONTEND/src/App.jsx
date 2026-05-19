@@ -17,6 +17,8 @@ import ErrorBoundary from './components/ErrorBoundary'
 import AuthorProfile from './components/AuthorProfile'
 import AuthorArticles from './components/AuthorArticles'
 import EditArticle from './components/EditArticle'
+import AboutUs from './components/AboutUs'
+import ContactUs from './components/ContactUs'
 
 function App() {
   const routerObj=createBrowserRouter([
@@ -74,12 +76,20 @@ function App() {
             <AuthorArticles/>
           </ProtectedRoute>
         },
-{
+        {
           path:"edit-article/:id",
           element:
           <ProtectedRoute allowedRoles={["AUTHOR"]}>
             <EditArticle/>
           </ProtectedRoute>
+        },
+        {
+          path:"about",
+          element:<AboutUs/>
+        },
+        {
+          path:"contact",
+          element:<ContactUs/>
         }
         
       ]

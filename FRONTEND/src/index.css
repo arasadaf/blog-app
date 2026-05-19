@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Force default font color across the app */
+html,
+body {
+  color: #1e293b; /* slate-800 */
+}
+
+/* Fallback for elements that don't set a text color */
+* {
+  color: inherit;
+}
+

@@ -440,3 +440,11 @@ This project is licensed under the ISC License.
 Detailed information for each part of the app can be found here:
 - [Frontend Documentation](./FRONTEND/README.md)
 - [Backend Documentation](./BACKEND/README.md)
+
+---
+
+## ✨ Recent Updates
+To make the application feel more like a real-world platform, the following features have been added:
+- **About Us Page**: A dedicated page detailing the mission and journey of the platform.
+- **Contact Us Page**: A functional contact form for user inquiries and support.
+- **Enhanced Navigation**: Quick links added to the header and footer for better user experience.
